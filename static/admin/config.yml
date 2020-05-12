@@ -16,16 +16,44 @@ collections:
     label: "Blog"
     folder: "src/pages/blog"
     create: true
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    slug: '{{fields.slug}}'
     fields:
-      - {label: "Template Key", name: "templateKey", widget: "hidden", default: "blog-post"}
-      - {label: "Title", name: "title", widget: "string"}
-      - {label: "Publish Date", name: "date", widget: "datetime"}
-      - {label: "Description", name: "description", widget: "text"}
-      - {label: "Featured Post", name: "featuredpost", widget: "boolean"}
-      - {label: "Featured Image", name: "featuredimage", widget: image}
-      - {label: "Body", name: "body", widget: "markdown"}
-      - {label: "Tags", name: "tags", widget: "list"}
+      - {
+          label: 'Template type',
+          name: 'type',
+          widget: 'hidden',
+          default: 'news',
+        }
+      - { label: '投稿日時 (必須)', name: 'date', widget: 'datetime' }
+      - label: 'URL (必須)'
+        name: 'slug'
+        widget: 'string'
+        default: ''
+        hint: '/news/hoge/ の hoge に入る URL となる文字列。e.g. 「2019-12-04」'
+      - { label: 'タイトル (必須)', name: 'title', widget: 'string' }
+      - {
+          label: 'Description',
+          name: 'description',
+          widget: 'text',
+          required: false,
+          hint: 'OGP の description となるテキスト。未入力の場合は本文の抜粋が入ります。',
+        }
+      - {
+          label: 'OGP 画像',
+          name: 'ogpThumbnail',
+          widget: 'image',
+          required: false,
+          default: '',
+          hint: 'OGP に使用される画像。ページには表示されません。',
+        }
+      - {
+          label: 'お問い合わせフォームを表示する',
+          name: 'showContactForm',
+          widget: 'boolean',
+          default: false,
+          hint: 'リソース状況更新のお知らせなどにお問い合わせフォームを表示するかを選択します。',
+      }
+      - { label: '本文 (必須)', name: 'body', widget: 'markdown' }
 
   - name: "pages"
     label: "Pages"
