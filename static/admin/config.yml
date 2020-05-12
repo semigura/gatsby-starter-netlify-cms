@@ -29,8 +29,9 @@ collections:
       - { label: '投稿日時 (必須)', name: 'date', widget: 'datetime' }
       - label: 'URL (必須)'
         name: 'slug'
-        widget: 'text'
-        default: ''
+        widget: "datetime"
+        default: ""
+        dateFormat: "YYYY-MM-DD"
         hint: '/news/hoge/ の hoge に入る URL となる文字列。e.g. 「2019-12-04」'
       - { label: 'タイトル (必須)', name: 'title', widget: 'string' }
       - {
